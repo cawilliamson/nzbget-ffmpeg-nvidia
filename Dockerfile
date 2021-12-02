@@ -37,7 +37,8 @@ RUN mkdir -p /opt/nzbget && \
 RUN mkdir -p /opt/mp4-automator && \
   git clone --depth=1 https://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4-automator && \
   rm -f /opt/mp4-automator/config/autoProcess.ini && \
-  ln -sf /config/autoProcess.ini /opt/mp4-automator/config/autoProcess.ini
+  ln -sf /config/autoProcess.ini /opt/mp4-automator/config/autoProcess.ini && \
+  ln -sf /config/logging.ini /opt/mp4-automator/config/logging.ini
 
 # remove apt cache
 RUN rm -rf /var/lib/apt/lists/
