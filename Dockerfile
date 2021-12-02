@@ -3,6 +3,9 @@ FROM jrottenberg/ffmpeg:4-nvidia
 # avoid interactive prompts from apt
 ARG DEBIAN_FRONTEND=noninteractive
 
+# append nzbget path to PATH variable
+ENV PATH="/opt/nzbget:${PATH}"
+
 # install apt dependencies
 RUN apt update && \
   apt -y dist-upgrade && \
