@@ -33,9 +33,11 @@ RUN mkdir -p /opt/nzbget && \
   sh /tmp/nzbget.run --destdir /opt/nzbget && \
   rm -f /tmp/nzbget.run
 
-# install mp4-automator
+# install mp4-automator and symlink config file
 RUN mkdir -p /opt/mp4-automator && \
-  git clone --depth=1 https://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4-automator
+  git clone --depth=1 https://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4-automator && \
+  rm -f /opt/mp4-automator/config/autoProcess.ini && \
+  ln -sf /config/autoProcess.ini /opt/mp4-automator/config/autoProcess.ini
 
 # remove apt cache
 RUN rm -rf /var/lib/apt/lists/
