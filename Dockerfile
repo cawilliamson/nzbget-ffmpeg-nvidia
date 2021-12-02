@@ -9,7 +9,7 @@ ENV PATH="/opt/nzbget:${PATH}"
 # install apt dependencies
 RUN apt update && \
   apt -y dist-upgrade && \
-  apt -y install curl python3 python3-pip
+  apt -y install curl git python3 python3-pip
 
 # install pip3 dependencies
 RUN pip3 install \
@@ -32,6 +32,10 @@ RUN mkdir -p /opt/nzbget && \
   curl -Lo /tmp/nzbget.run $(curl -s https://nzbget.net/info/nzbget-version-linux.json | grep "stable-download" | cut -d '"' -f 4) && \
   sh /tmp/nzbget.run --destdir /opt/nzbget && \
   rm -f /tmp/nzbget.run
+
+# install mp4-automator
+RUN mkdir -p /opt/mp4-automator && \
+  git clone --depth=1 https://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4-automator
 
 # remove apt cache
 RUN rm -rf /var/lib/apt/lists/
