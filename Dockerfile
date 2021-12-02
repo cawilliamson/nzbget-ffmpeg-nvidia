@@ -43,7 +43,7 @@ VOLUME /config /downloads
 EXPOSE 6789/tcp
 
 # create user
-RUN useradd -m -d /opt/nzbget -s /bin/bash -u 1001 nzbget
+RUN useradd -m -d /home/nzbget -s /bin/bash -u 1100 -g 1100 nzbget
 
 # stop running things as root
 USER nzbget
